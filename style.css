@@ -1,4 +1,16 @@
+#header {
+  background: #444;
+  color: #fff;
+  font-size: 2rem;
+  padding: .5rem 2rem;
+}
+
 #social-icons {
-  /* font-size: 4rem; */
   font-size: 20vw;
+}
+#social-icons a {
+  color: #444;
+}
+#social-icons a:hover {
+  color: #333;
 }
