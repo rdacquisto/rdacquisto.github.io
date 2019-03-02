@@ -2,15 +2,22 @@
   background: #444;
   color: #fff;
   font-size: 2rem;
-  padding: .5rem 2rem;
+  padding: 0.75rem 1rem;
+}
+
+#header .container {
+  max-width: 100%;
 }
 
 #social-icons {
-  font-size: 20vw;
+  text-align: right;
+  margin-bottom: 0;
 }
+
 #social-icons a {
-  color: #444;
+  color: #fff;
 }
+
 #social-icons a:hover {
-  color: #333;
+  color: #ddd;
 }
