@@ -1,10 +1,14 @@
 ---
+title: The right tool(s) for the job
 layout: post
-title:  "The right tool for the job"
-date:   2019-11-28 11:00:00 -0800
-categories: [development]
-tags: [development, mantras, Jekyll]
+categories:
+- development
+tags:
+- development
+- mantras
+- Jekyll
 ---
+
 Today I am starting a project using Jekyll. Jekyll is a tool I have not heard about before.
 [This commit] is the reason for this project.
 I had to duplicate a bunch of markup for my 404 page.
