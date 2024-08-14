@@ -2,12 +2,25 @@ const { writeFileSync } = require('fs');
 const { createIcs } = require('./ics');
 const { scrapSchedules } = require('./scraper');
 
-const CLUSTER_PUCKS_SCHEDULE_URL = [
-  'https://snokinghockeyleague.com/api/team/subSchedule/1096/3278?v=12670',
+const CLUSETER_PUCKS_SEASONS = [
+  {
+    season: '2024 - Summer',
+    seasonId: '1096',
+    teamId: '3278',
+    divisionId: '359',
+  },
+  {
+    season: '2024 SKAHL Summer Playoffs',
+    seasonId: '1099',
+    teamId: '3278',
+    divisionId: '374',
+  },
 ];
 
 const run = async () => {
-  const events = await scrapSchedules({ urls: CLUSTER_PUCKS_SCHEDULE_URL });
+  const events = await scrapSchedules({
+    seasons: CLUSETER_PUCKS_SEASONS,
+  });
 
   const icsContents = createIcs({ events });
 

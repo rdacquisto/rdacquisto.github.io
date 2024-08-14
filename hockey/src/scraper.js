@@ -1,6 +1,4 @@
 const axios = require('axios');
-const jsdom = require('jsdom');
-const { JSDOM } = jsdom;
 
 const rinks = {
   Renton: '12620 164th Ave SE, Renton, WA 98059',
@@ -22,8 +20,13 @@ const getDescription = ({ game }) => {
   return `Jersey: ${color}\n${game.teamAwayName} at ${game.teamHomeName}`;
 };
 
-const scrapSchedules = async ({ urls }) => {
-  const seasons = await Promise.all(
+const scrapSchedules = async ({ seasons }) => {
+  const urls = seasons.map(
+    (season) =>
+      `https://snokinghockeyleague.com/api/team/subSchedule/${season.seasonId}/${season.teamId}?v=12670`
+  );
+
+  const output = await Promise.all(
     await urls.map(async (url) => {
       const response = await axios.get(url);
       const { games } = response.data;
@@ -32,6 +35,7 @@ const scrapSchedules = async ({ urls }) => {
       return games.map((game) => {
         const startDate = new Date(game.dateTime);
         return {
+          uid: `CPH_${game.seasonId}_${game.id}`,
           title: getTitle({ game }),
           description: getDescription({ game }),
           location: rinks[game.rinkName],
@@ -51,7 +55,7 @@ const scrapSchedules = async ({ urls }) => {
     })
   );
 
-  return seasons.flat();
+  return output.flat();
 };
 
 module.exports = { scrapSchedules };
